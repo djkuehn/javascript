@@ -3,6 +3,21 @@ let tcNum = 0;
 let numPassed = 0;
 const tcStatuses = [];
 
+/**************************************************
+ * Function name: checkCashRegister
+ * input(s): price - cost of item to be purchased
+ *           cash - amt received from customer
+ *           cid - array of arrays listing the amts
+ *                 of each bill & coin in the drawer
+ * output(s): message - preformatted message with the
+ *                      format: 'status': str, 'change': []
+ *                      with 'status' set based on
+ *                      whether the cash in the drawer
+ *                      (cid) was sufficient to make the
+ *                      necessary change and 'change' set
+ *                      based on the status message, change
+ *                      needed, and cash in drawer,
+ **************************************************/
 function checkCashRegister(price, cash, cid) {
 
   //define map of money values (words => numerals)
@@ -190,6 +205,8 @@ function formatTestCase(func, expected) {
 /******************************************
  *              TEST CASES
  ******************************************/
+//input params: (cost (integer), cash (integer), cid (list of lists), expected output (map with 'status' (string) and 'change' (list of list(s) or empty list))
+//i.e. (int, int, [['str', int], ['str', int]...], {"status": str, "change": [['str', int], ['str', int]...]}
 
 formatTestCase(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]), {status: "OPEN", change: [["QUARTER", 0.5]]});
 
